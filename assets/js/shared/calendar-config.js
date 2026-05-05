@@ -102,6 +102,8 @@ export const calendarState = {
     isWithinEvent: null,
     isWithinEventButIsntOwner: null,
     isRentedTheEvent: null,
+    // jcc - purchase mode: selection lies inside an UP FOR RENTAL range owned by someone else
+    isWithinRentalFromOthers: null,
 };
 
 export const calendarElement = {
@@ -1235,6 +1237,26 @@ export function selectingDatesInCalendar(info) {
             return startCurrentEvent >= eventStart && endCurrentEvent <= eventEnd;
         });
         calendarState.isRentedTheEvent = isRentedTheEvent;
+
+        // --------------------------------------------------------------------------------------------------------
+
+        // jcc - purchase mode: rental events (#CCCCCC) belonging to OTHER owners (anyone but me)
+        const ifTheEventIsRentalFromOthersValidation = calendarElement.calendar.getEvents().filter(event => {
+            const props = event.extendedProps ?? {};
+            return (
+                Object.keys(props).length > 0 &&
+                props.id_owner != ownerId.value &&
+                event.backgroundColor == '#CCCCCC'
+            );
+        });
+
+        const mergedRentalFromOthersRanges = buildMergedOwnerRanges(ifTheEventIsRentalFromOthersValidation);
+        const isWithinRentalFromOthers = mergedRentalFromOthersRanges.some(event => {
+            const eventStart = new Date(event.start);
+            const eventEnd = new Date(event.end ?? event.start);
+            return startCurrentEvent >= eventStart && endCurrentEvent <= eventEnd;
+        });
+        calendarState.isWithinRentalFromOthers = isWithinRentalFromOthers;
 
         // --------------------------------------------------------------------------------------------------------
     }

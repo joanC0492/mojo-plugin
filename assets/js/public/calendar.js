@@ -81,7 +81,7 @@ export const ADMIN_AJAX = admin_ajax;
 
 jQuery(document).ready(function ($) {
 
-    var k = 0, j = 0, l = 0;
+    var k = 0, j = 0, l = 0, m = 0; // jcc - m = purchase mode
     let firstExchangeBgEvent = null;
 
     var first_exchange_dates = {}
@@ -154,6 +154,9 @@ jQuery(document).ready(function ($) {
             }
             if (j == 1) {
                 rentSelectedDates(info);
+            }
+            if (m == 1) {
+                buySelectedDates(info);
             }
         },
         eventClick: function (info) {
@@ -564,6 +567,111 @@ jQuery(document).ready(function ($) {
                 }
             })
         })
+    }
+
+    // --------------------------------------------------------------------------- jcc
+
+    if (buyButton) {
+        buyButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            // jcc
+            clearRange();
+            unselectCalendar();
+
+            // text: "Pick the rental nights you'd like to purchase from another share. Your request will be sent to the Mojo Sharing admins for approval.",
+            Swal.fire({
+                title: "Buy Rental Dates",
+                text: "Pick the rental nights you'd like to purchase from another share.",
+                icon: 'info',
+                showConfirmButton: true,
+                confirmButtonText: 'OK',
+                iconHtml: `<svg width="54" height="53" viewBox="0 0 54 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.2012 41.2855L14.1543 51.9562C13.9874 51.6824 13.8749 51.3599 13.8749 50.9887V40.5449L38.4187 16.558L17.2012 41.2855ZM15.7818 52.8487C16.2374 52.8449 16.6987 52.6912 17.0755 52.3143L23.8968 45.4912L18.6993 42.8924L15.7818 52.8487ZM51.0655 0.766784L4.12866 23.8612C-0.0450884 25.9143 -0.0638385 31.8599 4.09679 33.9393L13.2655 38.5237L48.4949 4.10616C48.8774 3.73303 49.4624 3.66741 49.918 3.94491C50.5293 4.31991 50.6605 5.15241 50.1937 5.69803L19.6312 41.278L36.2062 49.528C39.4799 51.1649 43.4212 49.288 44.2124 45.7143L53.7205 2.85553C54.0655 1.31991 52.4774 0.0730338 51.0655 0.766784Z" fill="#60C0A8"/>
+                </svg>`
+            }).then((result) => {
+                if (result.isConfirmed || result.dismiss === Swal.DismissReason.cancel || result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.esc) {
+                    m = 1;
+
+                    if (!buyButton.classList.contains('off')) {
+                        buyButton.classList.add('off')
+                    }
+                    if (cancelBuyButton && cancelBuyButton.classList.contains('off')) {
+                        cancelBuyButton.classList.remove('off')
+                    }
+                    if (rentButton && !rentButton.classList.contains('off')) {
+                        rentButton.classList.add('off')
+                    }
+                    if (exchangeButton && !exchangeButton.classList.contains('off')) {
+                        exchangeButton.classList.add('off')
+                    }
+
+                    return;
+                }
+            });
+        })
+    }
+
+    if (cancelBuyButton) {
+        cancelBuyButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            Swal.fire({
+                text: 'Are you sure you want to cancel the purchase process?',
+                icon: 'question',
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.cancel || result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.esc) {
+                    return;
+                }
+                if (result.isConfirmed) {
+                    m = 0;
+                    clearRange();
+                    unselectCalendar();
+
+                    if (buyButton && buyButton.classList.contains('off')) {
+                        buyButton.classList.remove('off')
+                    }
+                    if (!cancelBuyButton.classList.contains('off')) {
+                        cancelBuyButton.classList.add('off')
+                    }
+                    if (rentButton && rentButton.classList.contains('off')) {
+                        rentButton.classList.remove('off')
+                    }
+                    if (exchangeButton && exchangeButton.classList.contains('off')) {
+                        exchangeButton.classList.remove('off')
+                    }
+                }
+            })
+        })
+    }
+
+    // ---------------------------------------------------------------------------
+
+    function buySelectedDates(info) {
+        if (!calendarState.isWithinRentalFromOthers) {
+            alertError('You can only buy dates that are listed UP FOR RENTAL by other shares.');
+            unselectCalendar();
+            return;
+        }
+
+        if (calendarState.diffNights < minimumNumberOfNights) {
+            alertError('A minimum of 3 consecutive nights must be selected.');
+            unselectCalendar();
+            return;
+        }
+
+        // Front-only mock — no backend call yet.
+        Swal.fire({
+            title: 'Selection valid',
+            text: `You selected ${calendarState.diffNights} night(s) from ${calendarState.strStartDate} to ${calendarState.strEndDate}. Next step (request submission) is not implemented yet.`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            clearRange();
+            unselectCalendar();
+        });
     }
 
     // ---------------------------------------------------------------------------
