@@ -153,6 +153,7 @@ function get_panel()
                 <input type="hidden" name="selected_days" value="<?php echo $selected_days; ?>">
                 <input type="hidden" name="round" value="<?php echo $round; ?>">
                 <input type="hidden" name="purchase_min_nights" value="2"><!-- jcc: placeholder, backend pending -->
+                <input type="hidden" name="purchase_price_per_night" value="200"><!-- jcc: €/noche mock, backend pending -->
             <?php else: ?>
                 <input type="hidden" name="round" value="1">
             <?php endif; ?>

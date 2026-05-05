@@ -66,6 +66,7 @@ const {
     buyButton,
     cancelBuyButton,
     purchaseMinNights,
+    purchasePricePerNight,
     selectingDatesInCalendar,
     LS_DATE1_KEY,
     LS_DATE2_KEY,
@@ -665,13 +666,37 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        // Front-only mock — no backend call yet.
+        // Front-only mock — no backend call yet. jcc
+        const pricePerNight = purchasePricePerNight ? parseInt(purchasePricePerNight.value) : 200;
+        const totalPrice = calendarState.diffNights * pricePerNight;
         Swal.fire({
-            title: 'Selection valid',
-            text: `You selected ${calendarState.diffNights} night(s) from ${calendarState.strStartDate} to ${calendarState.strEndDate}. Next step (request submission) is not implemented yet.`,
-            icon: 'success',
-            confirmButtonText: 'OK'
-        }).then(() => {
+            title: 'Purchase summary',
+            html: `
+                <table style="width:100%;text-align:left;border-collapse:collapse;font-size:14px;">
+                    <tr><td style="padding:6px 0;">Range</td><td style="padding:6px 0;"><strong>${calendarState.strStartDate} → ${calendarState.strEndDate}</strong></td></tr>
+                    <tr><td style="padding:6px 0;">Nights</td><td style="padding:6px 0;"><strong>${calendarState.diffNights}</strong></td></tr>
+                    <tr><td style="padding:6px 0;">Price per night</td><td style="padding:6px 0;"><strong>€${pricePerNight}</strong> <em style="color:#999;font-size:12px;">(min. price list)</em></td></tr>
+                    <tr style="border-top:1px solid #eee;"><td style="padding:8px 0;">Estimated total</td><td style="padding:8px 0;font-size:18px;color:#3bb273;"><strong>€${totalPrice.toLocaleString()}</strong></td></tr>
+                </table>
+                <p style="margin-top:12px;font-size:12px;color:#999;">Your request will go to Mojo Sharing admins, not to the seller. Payment is handled offline.</p>
+            `,
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'Submit request',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#3bb273',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // TODO: AJAX call to backend (not implemented yet)
+                Swal.fire('Sent!', 'Your purchase request has been submitted to the admins.', 'success').then(() => {
+                    // jcc
+                    m = 0;
+                    if (buyButton && buyButton.classList.contains('off')) buyButton.classList.remove('off');
+                    if (cancelBuyButton && !cancelBuyButton.classList.contains('off')) cancelBuyButton.classList.add('off');
+                    if (rentButton && rentButton.classList.contains('off')) rentButton.classList.remove('off');
+                    if (exchangeButton && exchangeButton.classList.contains('off')) exchangeButton.classList.remove('off');
+                });
+            }
             clearRange();
             unselectCalendar();
         });
