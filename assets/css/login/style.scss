@@ -1,0 +1,113 @@
+.mojo_login{
+    &-widget{
+        width: min(100%, 490px);
+        &>*{
+            width: 100%;
+        }
+    }
+    &-widget, &-logo, &-advice, &-error{
+        margin-inline: auto;
+    }
+    &-error{
+        width: 100%;
+    }
+    &-logo{
+        max-width: 280.35px;
+        margin-bottom: 66px;
+        a, img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+    &-form{
+        padding-top: 24px;
+        input, [type="submit"]{
+            width: 100%;
+            border-radius: 3px;
+            padding-inline: 12px !important;
+            outline: none;
+            font-size: 14px;
+        }
+        [type="submit"]{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            height: 41px;
+            max-width: 187px;
+            margin-inline: auto;
+            background: var(--primary);
+            cursor: pointer;
+            color: white;
+            font-weight: 700;
+            text-align: center;
+        }
+    }
+    &-control{
+        width: 100%;
+        label{
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #33475B;
+            margin-bottom: 4px;
+        }
+        input{
+            height: 40px;
+            background: #F5F8FA;
+            border: 1px solid #CBD6E2 !important;
+            color: black !important;
+        }
+        &.mblock{
+            margin-block: 18px 36px;
+        }
+    }
+
+    &-error, &-advice{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 9px;
+        border-radius: 3px;
+        padding-block: 9px;
+        max-width: 441px;
+        svg{
+            min-width: 20px;
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            object-position: center;
+        }
+        p, a{
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+    
+    &-error{
+        width: fit-content;
+        padding-inline: 16px;
+        background: #eb4d4b;
+        p{
+            color: white;
+        }
+        svg{
+            fill: white;
+        }
+        path{
+            stroke: white;
+        }
+    }
+    &-advice{
+        margin-top: 72px;
+        background: #F2F0EE;
+        padding-inline: 9px 18px;
+        p{
+            color: black;
+        }
+        a{
+            color: #60C0A8;
+        }
+    }
+}

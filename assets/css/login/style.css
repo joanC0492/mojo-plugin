@@ -1,0 +1,112 @@
+.mojo_login-widget {
+  width: min(100%, 490px);
+}
+.mojo_login-widget > * {
+  width: 100%;
+}
+.mojo_login-widget, .mojo_login-logo, .mojo_login-advice, .mojo_login-error {
+  margin-inline: auto;
+}
+.mojo_login-error {
+  width: 100%;
+}
+.mojo_login-logo {
+  max-width: 280.35px;
+  margin-bottom: 66px;
+}
+.mojo_login-logo a, .mojo_login-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mojo_login-form {
+  padding-top: 24px;
+}
+.mojo_login-form input, .mojo_login-form [type=submit] {
+  width: 100%;
+  border-radius: 3px;
+  padding-inline: 12px !important;
+  outline: none;
+  font-size: 14px;
+}
+.mojo_login-form [type=submit] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  height: 41px;
+  max-width: 187px;
+  margin-inline: auto;
+  background: var(--primary);
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+.mojo_login-control {
+  width: 100%;
+}
+.mojo_login-control label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #33475B;
+  margin-bottom: 4px;
+}
+.mojo_login-control input {
+  height: 40px;
+  background: #F5F8FA;
+  border: 1px solid #CBD6E2 !important;
+  color: black !important;
+}
+.mojo_login-control.mblock {
+  margin-block: 18px 36px;
+}
+.mojo_login-error, .mojo_login-advice {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 9px;
+  border-radius: 3px;
+  padding-block: 9px;
+  max-width: 441px;
+}
+.mojo_login-error svg, .mojo_login-advice svg {
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+.mojo_login-error p, .mojo_login-error a, .mojo_login-advice p, .mojo_login-advice a {
+  font-size: 14px;
+  font-weight: 400;
+}
+.mojo_login-error {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-inline: 16px;
+  background: #eb4d4b;
+}
+.mojo_login-error p {
+  color: white;
+}
+.mojo_login-error svg {
+  fill: white;
+}
+.mojo_login-error path {
+  stroke: white;
+}
+.mojo_login-advice {
+  margin-top: 72px;
+  background: #F2F0EE;
+  padding-inline: 9px 18px;
+}
+.mojo_login-advice p {
+  color: black;
+}
+.mojo_login-advice a {
+  color: #60C0A8;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,391 @@
+header:not(.mojo_general-head), footer {
+  display: none !important;
+}
+
+.mojo_dashboard-body h1, .mojo_dashboard-body h2 {
+  font-weight: 500 !important;
+  color: var(--primary);
+  letter-spacing: 0;
+}
+@media (min-width: 1100px) {
+  .mojo_dashboard-body h1, .mojo_dashboard-body h2 {
+    margin-bottom: 36px;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_dashboard-body h1, .mojo_dashboard-body h2 {
+    margin-bottom: 26px;
+  }
+}
+@media (min-width: 1100px) {
+  .mojo_dashboard-body h1 {
+    font-size: 22px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_dashboard-body h1 {
+    font-size: 20px !important;
+  }
+}
+@media (min-width: 1100px) {
+  .mojo_dashboard-body h2 {
+    font-size: 30px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_dashboard-body h2 {
+    font-size: 27px !important;
+  }
+}
+.mojo_dashboard-body .w-100 {
+  width: 100%;
+}
+@media (min-width: 1100px) {
+  .mojo_dashboard-sharing {
+    padding-top: 72px;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_dashboard-sharing {
+    padding-top: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .mojo_dashboard-sharing {
+    padding-top: 42px;
+  }
+}
+@media (max-width: 500px) {
+  .mojo_dashboard-sharing {
+    padding-top: 38px;
+  }
+}
+.mojo_dashboard-list {
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .mojo_dashboard-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 24px;
+  }
+}
+@media (max-width: 768px) {
+  .mojo_dashboard-list {
+    grid-template-columns: 100%;
+  }
+}
+.mojo_dashboard-pagination {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-inline: auto;
+}
+@media (min-width: 1024px) {
+  .mojo_dashboard-pagination {
+    margin-top: 36px;
+  }
+}
+@media (max-width: 1024px) {
+  .mojo_dashboard-pagination {
+    margin-top: 26px;
+  }
+}
+.mojo_dashboard-pagination a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+  border: 1px solid #c2c2c2;
+}
+.mojo_dashboard-pagination a:not(:last-child) {
+  border-right: none;
+}
+.mojo_dashboard-pagination a.current {
+  background: var(--primary);
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+@media (min-width: 1100px) {
+  .mojo_dashboard-pagination a {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_dashboard-pagination a {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+.mojo_property_card {
+  display: grid;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #C2C2C2;
+}
+@media (min-width: 1024px) {
+  .mojo_property_card {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}
+@media (max-width: 1024px) {
+  .mojo_property_card {
+    grid-template-columns: 100%;
+    align-items: flex-start;
+  }
+}
+@media (min-width: 1024px) {
+  .mojo_property_card:not(:last-child) {
+    margin-bottom: 36px;
+  }
+}
+.mojo_property_card > *, .mojo_property_card img {
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .mojo_property_card:not(.v2) > * {
+    height: 221px;
+  }
+}
+@media (min-width: 1024px) {
+  .mojo_property_card.v2 > * {
+    height: 233px;
+  }
+}
+.mojo_property_card > * img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+@media (max-width: 1024px) {
+  .mojo_property_card-thumb {
+    aspect-ratio: 16/8;
+  }
+}
+.mojo_property_card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-info {
+    padding-bottom: 18px;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-info {
+    padding-bottom: 15px;
+  }
+}
+@media (max-width: 1024px) {
+  .mojo_property_card-info {
+    gap: 24px;
+    position: relative;
+  }
+}
+.mojo_property_card-info > * {
+  width: 100%;
+}
+.mojo_property_card-message {
+  width: 100%;
+  background: var(--primary);
+  padding-block: 4px;
+}
+@media (max-width: 1024px) {
+  .mojo_property_card-message {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+  }
+}
+.mojo_property_card-message p {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.mojo_property_card-top, .mojo_property_card-shares {
+  padding-inline: 18px;
+}
+.mojo_property_card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-top {
+    margin-bottom: 10px;
+    padding-top: 17px;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-top {
+    margin-bottom: 7px;
+    padding-top: 14px;
+  }
+}
+@media (max-width: 500px) {
+  .mojo_property_card-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+.mojo_property_card-top p {
+  font-weight: 400;
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-top p:first-child {
+    font-size: 22px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-top p:first-child {
+    font-size: 20px !important;
+  }
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-top p:not(:first-child) {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-top p:not(:first-child) {
+    font-size: 18px !important;
+  }
+}
+.mojo_property_card-top p, .mojo_property_card-top span {
+  color: black;
+}
+.mojo_property_card-shares span {
+  display: block;
+  font-weight: 400;
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-shares span {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-shares span {
+    font-size: 14.6px !important;
+  }
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-shares span:not(:last-child) {
+    margin-bottom: 9px;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-shares span:not(:last-child) {
+    margin-bottom: 6px;
+  }
+}
+.mojo_property_card-bottom {
+  display: flex;
+  padding-inline: 18px;
+}
+@media (min-width: 1024px) {
+  .mojo_property_card-bottom {
+    align-items: center;
+  }
+}
+@media (max-width: 1024px) {
+  .mojo_property_card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+.mojo_property_card-bottom.between {
+  justify-content: space-between;
+}
+.mojo_property_card-bottom:not(.between) {
+  justify-content: center;
+}
+.mojo_property_card-bottom a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding-block: 7px;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: none !important;
+}
+.mojo_property_card-bottom a svg {
+  width: 24px;
+  height: 24px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+.mojo_property_card-bottom .manage, .mojo_property_card-bottom .view {
+  background: var(--primary);
+  color: white;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  border-radius: 3px;
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-bottom .manage, .mojo_property_card-bottom .view {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-bottom .manage, .mojo_property_card-bottom .view {
+    font-size: 14.6px !important;
+  }
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-bottom .view {
+    padding-inline: 16px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-bottom .view {
+    padding-inline: 12px !important;
+  }
+}
+.mojo_property_card-bottom .download {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+.mojo_property_card-bottom .download svg {
+  pointer-events: none;
+}
+@media (min-width: 1100px) {
+  .mojo_property_card-bottom .manage {
+    padding-inline: 32px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mojo_property_card-bottom .manage {
+    padding-inline: 26px !important;
+  }
+}/*# sourceMappingURL=style.css.map */

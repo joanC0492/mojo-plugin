@@ -1,0 +1,16 @@
+#property_operation th input, #property_operation th button, #property_operation th select{
+    width: 100%;
+    display: block;
+    margin-top: 3px;
+}
+
+#property_operation .delete_prop_operation{
+    display: block;
+    background: none;
+    border: none;
+    margin-left: auto;
+    outline: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding-inline: 10px;
+}
