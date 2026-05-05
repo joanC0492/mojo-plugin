@@ -67,6 +67,8 @@ export const calendarEl = document.getElementById('calendar'),
     // jcc
     buyButton = document.querySelector('[name="buy"]'),
     cancelBuyButton = document.querySelector('[name="cancel_buy"]');
+// jcc
+export const purchaseMinNights = document.querySelector('[name="purchase_min_nights"]');
 
 export const admin_ajax = document.querySelector('#mojo-admin_ajax').value;
 

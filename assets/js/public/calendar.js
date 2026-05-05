@@ -65,6 +65,7 @@ const {
     // jcc
     buyButton,
     cancelBuyButton,
+    purchaseMinNights,
     selectingDatesInCalendar,
     LS_DATE1_KEY,
     LS_DATE2_KEY,
@@ -656,8 +657,10 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        if (calendarState.diffNights < minimumNumberOfNights) {
-            alertError('A minimum of 3 consecutive nights must be selected.');
+        // jcc
+        const minNights = purchaseMinNights ? parseInt(purchaseMinNights.value) : 3;
+        if (calendarState.diffNights < minNights) {
+            alertError(`A minimum of ${minNights} consecutive nights must be selected.`);
             unselectCalendar();
             return;
         }
